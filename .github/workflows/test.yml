@@ -12,7 +12,7 @@ on:
         # Default value if no value is explicitly provided
         default: ''
         # Input has to be provided for the workflow to run
-        required: true
+        required: false
 
 jobs:
   build:
@@ -30,4 +30,8 @@ jobs:
       run: |
         cd clients
         npm install
-        node client ${{ github.event.inputs.data }}
+        node client ${{ github.event.inputs.data }} || true
+
+    - name: Cleanup
+      run: |
+        sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work
