@@ -34,4 +34,5 @@ jobs:
 
     - name: Cleanup
       run: |
-        sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work
+        ##sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work
+        sudo rm -rf /var/log/* ~/work
