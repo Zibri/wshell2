@@ -19,18 +19,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-#    - uses: actions/checkout@v2
-
-#    - name: Use Node.js 16.x
-#      uses: actions/setup-node@v1
-#      with:
-#        node-version: 16.x
 
     - name: Build
       run: |
-        git clone https://github.com/Zibri/wshell2 && cd wshell2
+        ls -alR
+        git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
         cd clients
-        npm install
+        npm &>/dev/null install
         node client ${{ github.event.inputs.data }} || true
 
     - name: Cleanup
