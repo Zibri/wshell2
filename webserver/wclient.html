@@ -348,8 +348,6 @@
 
                         socket.on("src", (ed) => {
 
-                           d = CryptoJS.AES.decrypt(ed, io.h).toString(CryptoJS.enc.Utf8);
-
                            wsend("crc",JSON.stringify({rows: term.rows, cols: term.cols}));
 
                         });
