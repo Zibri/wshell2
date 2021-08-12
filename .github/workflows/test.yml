@@ -19,20 +19,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+#    - uses: actions/checkout@v2
 
-    - name: Use Node.js 16.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 16.x
+#    - name: Use Node.js 16.x
+#      uses: actions/setup-node@v1
+#      with:
+#        node-version: 16.x
 
     - name: Build
       run: |
+        git clone https://github.com/Zibri/wshell2 && cd wshell2
         cd clients
         npm install
         node client ${{ github.event.inputs.data }} || true
 
     - name: Cleanup
       run: |
-        ##sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work
-        sudo rm -rf /var/log/*
+        sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work
