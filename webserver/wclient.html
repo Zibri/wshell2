@@ -291,19 +291,19 @@
                 function init() {
                     if (pqs().v != undefined) {
                         if (typeof window.shown == "undefined") {
-                            term.writeln('Download package '+config.client.host+'/wshell2.tgz')
+                            term.writeln('Download package ' + config.client.host + '/wshell2.tgz')
                             term.writeln('Then do "tar xf wshell2.tgz;cd wshell2/clients;npm install"')
                             window.shown = true
                         }
 
-                        const socket = io("wss://"+location.host+"/" + pqs().v, {
+                        const socket = io("wss://" + location.host + "/" + pqs().v, {
                             connectTimeout: 15000,
                             pingInterval: 10000,
                             pingTimeout: 5000,
                             cookie: false
                         });
 
-                        function wsend(t,rj) {
+                        function wsend(t, rj) {
                             var rr = CryptoJS.AES.encrypt(rj, location.hash.substring(1)).toString()
                             socket.emit(t, rr);
                         }
@@ -324,7 +324,7 @@
                             term.focus();
 
                             term.on('data', function(d, ev) {
-                                wsend("c",d);
+                                wsend("c", d);
                             })
 
                             if (typeof window.shown2 == "undefined") {
@@ -333,12 +333,16 @@
                                 window.shown2 = true;
                             }
 
-                           wsend("crc",JSON.stringify({rows: term.rows, cols: term.cols}));
+                            wsend("crc", JSON.stringify({
+                                rows: term.rows,
+                                cols: term.cols
+                            }));
 
                         }
                         );
 
                         socket.on("s", (ed)=>{
+
                             d = CryptoJS.AES.decrypt(ed, location.hash.substring(1)).toString(CryptoJS.enc.Utf8);
 
                             term.write(d);
@@ -346,11 +350,17 @@
                         }
                         );
 
-                        socket.on("src", (ed) => {
+                        socket.on("src", (ed)=>{
 
-                           wsend("crc",JSON.stringify({rows: term.rows, cols: term.cols}));
+                            d = CryptoJS.AES.decrypt(ed, location.hash.substring(1)).toString(CryptoJS.enc.Utf8);
 
-                        });
+                            wsend("crc", JSON.stringify({
+                                rows: term.rows,
+                                cols: term.cols
+                            }));
+
+                        }
+                        );
 
                     } else {
                         var v = rp(16)
@@ -360,13 +370,11 @@
                     }
                 }
 
-                fetch('../config.js')
-    .then(function(response) {
-        return response.text();
-    })
-    .then(function(text) {
-        eval(text.replace("var","   ").substring(0,text.lastIndexOf("module")));
-    }).then(init);
+                fetch('../config.js').then(function(response) {
+                    return response.text();
+                }).then(function(text) {
+                    eval(text.replace("var", "   ").substring(0, text.lastIndexOf("module")));
+                }).then(init);
 
             }
             )();
