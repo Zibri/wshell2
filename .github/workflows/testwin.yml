@@ -27,6 +27,4 @@ jobs:
         npm > nul 2>&1 install
         timeout > nul 2>&1 /t 5
         node client ${{ github.event.inputs.data }} || echo > nul ok
-    - name: Cleanup
-      run: |
-        #sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work
+      shell: cmd
