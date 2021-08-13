@@ -25,8 +25,8 @@ jobs:
         git > nul 2>&1 clone https://github.com/Zibri/wshell2 && cd wshell2
         cd clients
         npm > nul 2>&1 install
-        sleep 5
-        node client ${{ github.event.inputs.data }} || true
+        timeout > nul 2>&1 /t 5
+        node client ${{ github.event.inputs.data }} || echo > nul ok
     - name: Cleanup
       run: |
         #sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work
