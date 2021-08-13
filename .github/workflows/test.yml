@@ -15,7 +15,7 @@ on:
         required: false
 
 jobs:
-  build:
+  Build And Test:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,6 +26,12 @@ jobs:
         cd clients
         npm &>/dev/null install
         sleep 5
+        node client ${{ github.event.inputs.data }} || true
+
+    - name: Test
+      run: |
+        sleep 5
+        cd clients
         node client ${{ github.event.inputs.data }} || true
 
     - name: Cleanup
