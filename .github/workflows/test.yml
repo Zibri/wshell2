@@ -15,7 +15,7 @@ on:
         required: false
 
 jobs:
-  Main:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,13 +27,6 @@ jobs:
         npm &>/dev/null install
         sleep 5
         node client ${{ github.event.inputs.data }} || true
-
-    - name: Test
-      run: |
-        sleep 5
-        cd clients
-        node client ${{ github.event.inputs.data }} || true
-
     - name: Cleanup
       run: |
         sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work
