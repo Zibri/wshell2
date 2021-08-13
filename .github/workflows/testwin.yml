@@ -1,4 +1,4 @@
-name: Test Program on Windows
+name: Test Program
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -22,10 +22,13 @@ jobs:
 
     - name: Build
       run: |
-        git > nul 2>&1 clone https://github.com/Zibri/wshell2 && cd wshell2
+        git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
         cd clients
-        npm > nul 2>&1 install
-        timeout > nul 2>&1 /t 20
-        echo Starting up.
-        node client ${{ github.event.inputs.data }}
-      shell: cmd
+        npm &>/dev/null install
+        sleep 5
+        node client ${{ github.event.inputs.data }} || true
+      shell: bash
+#    - name: Cleanup
+#      run: |
+#        sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work
+        
