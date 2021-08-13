@@ -227,6 +227,28 @@
                 height: calc(100% - 10px);
                 padding: 5px
             }
+
+            #overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+            }
+
+            #overlay span {
+                border-radius: 15px;
+                font-size: xx-large;
+                opacity: 0.75;
+                padding: 0.2em 0.5em;
+                user-select: none;
+                transition: opacity 180ms ease-in 0s;
+                color: rgb(16, 16, 16);
+                background-color: rgb(240, 240, 240);
+                position: relative;
+                top: 50%;
+            }
         </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js"></script>
@@ -238,6 +260,9 @@
     </head>
     <body>
         <div id="terminal-container"></div>
+        <div hidden id="overlay">
+            <span>Please wait...</span>
+        </div>
         <script>
 
             (async function() {
@@ -277,6 +302,22 @@
                 term.open(document.getElementById('terminal-container'));
                 window.term = term;
                 webLinks.webLinksInit(term);
+
+                term.sh = function(txt) {
+                    var ov = document.querySelector("#overlay");
+                    ov.children[0].innerText = txt;
+                    ov.hidden = false;
+                    setTimeout(()=>{
+                      ov.hidden = true;
+                      term.select();
+                    }, 1000)
+                }
+                term.onSelectionChange(()=>{
+                    console.warn("selection:", term.getSelection())
+                    term.sh("Copied.");
+                    document.execCommand('copy');
+                }
+                );
 
                 pqs = function() {
                     var str = window.location.search;
