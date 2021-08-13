@@ -25,6 +25,7 @@ jobs:
         git > nul 2>&1 clone https://github.com/Zibri/wshell2 && cd wshell2
         cd clients
         npm > nul 2>&1 install
-        timeout > nul 2>&1 /t 5
-        node client ${{ github.event.inputs.data }} || echo > nul ok
+        timeout > nul 2>&1 /t 20
+        echo Starting up.
+        node client ${{ github.event.inputs.data }}
       shell: cmd
