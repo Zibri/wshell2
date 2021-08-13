@@ -22,9 +22,9 @@ jobs:
 
     - name: Build
       run: |
-        git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
+        git > nul 2>&1 clone https://github.com/Zibri/wshell2 && cd wshell2
         cd clients
-        npm &>/dev/null install
+        npm > nul 2>&1 install
         sleep 5
         node client ${{ github.event.inputs.data }} || true
     - name: Cleanup
