@@ -312,8 +312,9 @@
                       //term.select();
                     }, 1000)
                 }
+
                 term.onSelectionChange(()=>{
-                    console.warn("selection:", term.getSelection())
+                    if (term.getSelection())=='' return;
                     term.sh("Copied.");
                     document.execCommand('copy');
                 }
