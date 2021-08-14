@@ -4,7 +4,7 @@
   "description": "wshell2",
   "scripts": {
     "start": "cd webserver;node server",
-    "wshell2": "cd webserver;node server",
+    "bin": "cd webserver;node server",
     "server": "cd webserver;node server",
     "client": "cd clients;node client",
     "sclient": "cd clients;node sclient",
