@@ -1,0 +1,20 @@
+{
+  "name": "wshell_v2",
+  "version": "2.0.0",
+  "description": "wshell2",
+  "main": "server.js",
+  "scripts": {
+    "start":  "cd webserver;node server",
+    "server":  "cd webserver;node server",
+    "client": "cd clients;node client",
+    "sclient": "cd clients;node sclient",
+    "postinstall": "for a in clients webserver;do cd $a;npm install;cd ..;done"
+  },
+  "author": "Piergiorgio Zambrini",
+  "license": "MIT",
+  "private": true,
+  "keywords": [
+    "webshell","share","terminal","xterm"
+  ]
+}
+
