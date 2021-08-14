@@ -314,7 +314,7 @@
                 }
 
                 term.onSelectionChange(()=>{
-                    if (term.getSelection())=='' return;
+                    if (term.getSelection()=='') return;
                     term.sh("Copied.");
                     document.execCommand('copy');
                 }
