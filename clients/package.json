@@ -1,4 +1,7 @@
 {
+  "name": "wshell_v2_clients",
+  "version": "2.0.0",
+  "description": "wshell2 clients",
   "dependencies": {
     "node-cryptojs-aes": "^0.4.0",
     "node-pty": "^0.10.1",

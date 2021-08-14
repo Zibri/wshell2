@@ -1,18 +1,8 @@
 {
-  "name": "wshell_v2",
+  "name": "wshell_v2_webserver",
   "version": "2.0.0",
-  "description": "wshell2",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server"
-  },
-  "author": "Piergiorgio Zambrini",
-  "license": "MIT",
-  "private": true,
+  "description": "wshell2 server",
   "dependencies": {
     "socket.io": "^4.1.3"
-  },
-  "keywords": [
-    "socket.io"
-  ]
+  }
 }
