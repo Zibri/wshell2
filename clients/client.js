@@ -41,6 +41,8 @@ const config = require("../config.js");
         });
 
         function wsend(t,rj) {
+            var rr;
+            if(t=="s") rr=CryptoJS.AES.encrypt(rj.base64Slice(), io.h).toString(); else
             var rr = CryptoJS.AES.encrypt(rj, io.h).toString()
             socket.emit(t, rr);
         }
@@ -75,7 +77,8 @@ const config = require("../config.js");
                     name: 'xterm-256color',
                     cols: 80,
                     rows: 25,
-                    env: process.env
+                    env: process.env,
+                    encoding: null
                 });
 
                 io.myREPL.on('data', function(data) {

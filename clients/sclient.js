@@ -78,7 +78,7 @@ const config = require("../config.js");
 
         socket.on("s", (ed) => {
 
-            d = CryptoJS.AES.decrypt(ed, io.h).toString(CryptoJS.enc.Utf8);
+            d = Buffer.from(CryptoJS.AES.decrypt(ed, io.h).toString(CryptoJS.enc.Utf8),"base64");
 
             process.stdout.write(d);
 

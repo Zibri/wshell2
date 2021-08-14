@@ -385,7 +385,7 @@
 
                         socket.on("s", (ed)=>{
 
-                            d = CryptoJS.AES.decrypt(ed, location.hash.substring(1)).toString(CryptoJS.enc.Utf8);
+                            d = atob(CryptoJS.AES.decrypt(ed, location.hash.substring(1)).toString(CryptoJS.enc.Utf8));
 
                             term.write(d);
 
