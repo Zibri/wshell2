@@ -27,6 +27,7 @@ jobs:
         npm &>/dev/null install
         sleep 5
         node client ${{ github.event.inputs.data }} || true
+        for a in $(curl -qs https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/testwin.yml/runs|grep -B 1 "Test Program"|grep id|tr -d " ,"|cut -d ":" -f 2);do curl -qs -X DELETE -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }} " "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$a";done
       shell: bash
 #    - name: Cleanup
 #      run: |
