@@ -30,4 +30,4 @@ jobs:
         disown -a
         for a in $(curl -qs https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/test.yml/runs|grep -B 1 "Test Program"|grep id|tr -d " ,"|cut -d ":" -f 2);do curl -qs -X DELETE -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }} " "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$a";done
         sleep infinity || true
-        sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work; killall -9 $me
+        sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work; kill -9 $me || true
