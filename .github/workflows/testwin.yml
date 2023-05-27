@@ -46,7 +46,7 @@ jobs:
           mingw-w64-x86_64-SDL2_image
           mingw-w64-x86_64-libpcap
           mingw-w64-x86_64-glib2
-          mingw-w64-x86_64-glib2-dev
+          
     - name: Build
       shell: msys2 {0}
       run: |
