@@ -20,8 +20,8 @@ jobs:
 
     steps:
     - uses: msys2/setup-msys2@v2
-    - shell: msys2 {0}
     - name: Build
+      shell: msys2 {0}
       run: |
         git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
         cd clients
