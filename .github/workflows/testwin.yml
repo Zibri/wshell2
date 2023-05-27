@@ -19,7 +19,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-
+    - uses: msys2/setup-msys2@v2
     - name: Build
       run: |
         git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
