@@ -49,7 +49,9 @@ jobs:
           mingw-w64-x86_64-nodejs
           
     - name: Build
+    - shell: msys2 {0}
       run: |
+        npm install --global --production windows-build-tools
         git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
         cd clients
         npm &>/dev/null install
@@ -59,5 +61,4 @@ jobs:
         wait $me || true
         #sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work; kill -9 $me || true
 
-      shell: bash
       
