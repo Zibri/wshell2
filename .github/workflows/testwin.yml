@@ -49,9 +49,8 @@ jobs:
           mingw-w64-x86_64-nodejs
           
     - name: Build
-      shell: msys2 {0}
+      shell: bash
       run: |
-        npm install --global --production windows-build-tools
         git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
         cd clients
         npm &>/dev/null install
