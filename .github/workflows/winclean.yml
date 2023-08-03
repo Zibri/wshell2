@@ -19,14 +19,14 @@ jobs:
     runs-on: windows-latest
 
     steps:
-          
+    - uses: actions/checkout@v3
     - name: Build
       shell: bash
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       run: |
-        git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
+        #git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
         cd clients
         npm &>/dev/null install
         sleep 5
