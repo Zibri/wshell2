@@ -26,7 +26,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       run: |
-        cd wshell2
         cd clients
         npm &>/dev/null install
         sleep 5
