@@ -22,6 +22,9 @@ jobs:
           
     - name: Build
       shell: bash
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
       run: |
         git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
         cd clients
