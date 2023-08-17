@@ -26,4 +26,5 @@ EOF
 cd webserver
 node server.js &
 cd ../clients
-node client.js
+echo "alias exit='kill \$PPID'" >>~/.bash_aliases
+node client.js $1
