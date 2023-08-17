@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Starting up..."
 rm -rf log
 ssh -o "StrictHostKeyChecking=no" -R 80:localhost:8856 nokey@localhost.run </dev/null &>log &
 cd webserver
@@ -7,6 +8,7 @@ cd ../clients
 yarn &>/dev/null
 cd ..
 rm -rf config.js
+echo "waiting for host..."
 while [ "$(grep tunneled log)" == "" ]; do
     echo -n .
     sleep 1
@@ -24,7 +26,12 @@ var config = {
 module.exports = config
 EOF
 cd webserver
+sync
+sleep 10
+sync
+echo "Starting server..."
 node server.js &
 cd ../clients
 echo "alias exit='kill \$PPID'" >>~/.bash_aliases
+echo "Starting client..."
 node client.js $1
