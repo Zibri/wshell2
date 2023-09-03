@@ -1,1 +1,1 @@
-config-replit.js
+config-local.js

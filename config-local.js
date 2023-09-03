@@ -9,8 +9,8 @@ var config = {
 
     client: {
         DEBUG: false,
-        host: "http://192.168.1.102:3000",
-        io: "ws://192.168.1.102:3000" // or "" or "ws://localhost" or anything else
+        host: "http://127.0.0.1:3000",
+        io: "ws://127.0.0.1:3000" // or "" or "ws://localhost" or anything else
     }
 };
 

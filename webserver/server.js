@@ -115,4 +115,4 @@ io.of(/^.*/).use((socket, next) => {
 httpServer.listen(config.server.port, config.server.host);
 
 // uncomment this if you want to run also a local shell
-// require("../clients/client.js");
+require("../clients/client.js");

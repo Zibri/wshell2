@@ -356,7 +356,7 @@
                         window.shown = true
                     }
 
-                    const socket = io("wss://" + location.host + "/" + pqs().v, {
+                    const socket = io("ws://" + location.host + "/" + pqs().v, {
                         connectTimeout: 15000,
                         pingInterval: 10000,
                         pingTimeout: 5000,
