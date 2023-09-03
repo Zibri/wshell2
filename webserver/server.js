@@ -27,6 +27,26 @@ const httpServer = createServer((req, response) => {
             "Content-Type": "application/javascript"
         });
         response.end(readFileSync("../config.js", "utf8"));
+    } else if (url == '/xterm.js') {
+        response.writeHead(200, {
+            "Content-Type": "application/javascript"
+        });
+        response.end(readFileSync("xterm.js", "utf8"));
+    } else if (url == '/xterm-addon-webgl.js') {
+        response.writeHead(200, {
+            "Content-Type": "application/javascript"
+        });
+        response.end(readFileSync("./xterm-addon-webgl.js", "utf8"));
+    } else if (url == '/xterm-addon-fit.js') {
+        response.writeHead(200, {
+            "Content-Type": "application/javascript"
+        });
+        response.end(readFileSync("./xterm-addon-fit.js", "utf8"));
+    } else if (url == '/xterm-addon-web-links.js') {
+        response.writeHead(200, {
+            "Content-Type": "application/javascript"
+        });
+        response.end(readFileSync("./xterm-addon-web-links.js", "utf8"));
     } else if (url == '/wshell2.tgz') {
         response.writeHead(200, {
             "Content-Type": "application/octet-stream"
