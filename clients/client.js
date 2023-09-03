@@ -88,8 +88,7 @@ const config = require("../config.js");
                 io.myREPL.on('exit', function(c) {
 
                     console.log("Shell has exited.");
-
-                    setTimeout(startREPL, 500);
+                    if(c!=0) setTimeout(startREPL, 500); else process.exit(c)
 
                 });
 
