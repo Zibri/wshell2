@@ -50,8 +50,10 @@ jobs:
           
     - name: Build
       shell: bash
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
+        gh repo clone $GITHUB_REPOSITORY .
         cd clients
         npm &>/dev/null install
         sleep 5
