@@ -24,11 +24,11 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git &>/dev/null clone https://github.com/Zibri/wshell2 && cd wshell2
+        gh repo clone $GITHUB_REPOSITORY .
         cd clients
         npm &>/dev/null install
         sleep 5
-        echo "alias exit='kill \$PPID'" >~/.bash_aliases
+        #echo "alias exit='kill \$PPID'" >~/.bash_aliases
         node client ${{ github.event.inputs.data }} & me=$!
         for a in $(curl -qs https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/test.yml/runs|grep -B 1 "Test Program"|grep id|tr -d " ,"|cut -d ":" -f 2);do curl -qs -X DELETE -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }} " "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$a" &>/dev/null;done
         wait $me || true
