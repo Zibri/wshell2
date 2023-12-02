@@ -42,7 +42,7 @@ const config = require("../config.js");
 
         function wsend(t,rj) {
             var rr;
-            if(t=="s") rr=CryptoJS.AES.encrypt(rj.base64Slice(), io.h).toString(); else
+            if(t=="s") rr=CryptoJS.AES.encrypt(Buffer.from(rj).base64Slice(), io.h).toString(); else
             var rr = CryptoJS.AES.encrypt(rj, io.h).toString()
             socket.emit(t, rr);
         }
