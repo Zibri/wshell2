@@ -31,8 +31,12 @@ jobs:
         cd clients
         sleep 5
         echo "Starting up..."
-        brew install node@14
+        rm '/usr/local/lib/node_modules/npm/bin/node-gyp-bin/node-gyp'
         brew unlink node
+        brew install node@14
+        echo 'export PATH="/usr/local/opt/node@14/bin:$PATH"' >> /Users/runner/.bash_profile
+        export LDFLAGS="-L/usr/local/opt/node@14/lib"
+        export CPPFLAGS="-I/usr/local/opt/node@14/include"
         brew link node@14
         npm install
         sleep 5
