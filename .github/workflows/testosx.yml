@@ -27,7 +27,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        gh repo clone $GITHUB_REPOSITORY .
+        #gh repo clone $GITHUB_REPOSITORY .
         cd clients
         sleep 5
         echo "Starting up..."
