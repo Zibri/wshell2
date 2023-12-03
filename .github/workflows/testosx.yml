@@ -19,20 +19,20 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 18
+    #- uses: actions/checkout@v4
+    #- uses: actions/setup-node@v4
+    #  with:
+    #    node-version: 18
     - name: Build
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        #gh repo clone $GITHUB_REPOSITORY .
+        gh repo clone $GITHUB_REPOSITORY .
         cd clients
         sleep 5
         echo "Starting up..."
-        npm --build-from-source install @mapbox/node-pre-gyp
-        npm install -g node-gyp
+        brew unlink node
+        brew link --overwrite --force node@12
         npm install
         sleep 5
         node client ${{ github.event.inputs.data }} & me=$!
