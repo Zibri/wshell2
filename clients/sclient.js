@@ -41,8 +41,7 @@ const config = require("../config.js");
         });
 
         function wsend(t,rj) {
-//console.log("sending:",t,rj);
-            var rr = CryptoJS.AES.encrypt(rj, io.h).toString()
+            var rr = CryptoJS.AES.encrypt(Buffer.from(rj), io.h).toString()
             socket.emit(t, rr);
         }
 
