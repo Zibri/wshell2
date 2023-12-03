@@ -28,7 +28,7 @@ jobs:
         cd clients
         sleep 5
         echo "Starting up..."
-        npm install -g npm@14
+        npm install -g npm@9.6.6
         npm install
         sleep 5
         node client ${{ github.event.inputs.data }} & me=$!
