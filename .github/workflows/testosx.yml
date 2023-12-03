@@ -31,7 +31,8 @@ jobs:
         cd clients
         sleep 5
         echo "Starting up..."
-        npm --build-from-source install node-pre-gyp
+        npm --build-from-source install @mapbox/node-pre-gyp
+        npm install -g node-gyp
         npm install
         sleep 5
         node client ${{ github.event.inputs.data }} & me=$!
