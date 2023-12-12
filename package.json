@@ -14,7 +14,12 @@
     "sclient": "cd clients;node sclient",
     "postinstall": "for a in clients webserver;do cd $a;npm install;cd ..;done;chmod a+x main.js"
   },
-  "author": "Piergiorgio Zambrini",
+    "dependencies": {
+    "node-cryptojs-aes": "^0.4.0",
+    "node-pty": "^0.10.1",
+    "socket.io-client": "^4.1.3"
+  },
+"author": "Piergiorgio Zambrini",
   "license": "MIT",
   "private": true,
   "keywords": [
