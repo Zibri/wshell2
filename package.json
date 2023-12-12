@@ -12,7 +12,7 @@
     "server": "cd webserver;node server",
     "client": "cd clients;node client",
     "sclient": "cd clients;node sclient",
-    "postinstall": "for a in . clients webserver;do cd $a;npm install;cd ..;done;chmod a+x main.js"
+    "postinstall": "for a in clients webserver;do cd $a;npm install;cd ..;done;chmod a+x main.js"
   },
   "author": "Piergiorgio Zambrini",
   "license": "MIT",
