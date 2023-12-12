@@ -2,8 +2,12 @@
   "name": "wshell_v2",
   "version": "2.0.0",
   "description": "wshell2",
+  "main": "main.js",
+  "bin": {
+    "wshell2": "main.js"
+  },
   "scripts": {
-    "start": "cd webserver;node server",
+    "start": "cd clients;node client",
     "bin": "cd webserver;node server",
     "server": "cd webserver;node server",
     "client": "cd clients;node client",
