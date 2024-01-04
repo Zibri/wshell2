@@ -6,5 +6,14 @@
     "node-cryptojs-aes": "^0.4.0",
     "node-pty": "^1.0.0",
     "socket.io-client": "^4.1.3"
-  }
+  },
+  "author": "Piergiorgio Zambrini",
+  "license": "MIT",
+  "private": true,
+  "keywords": [
+    "webshell",
+    "share",
+    "terminal",
+    "xterm"
+  ]
 }
