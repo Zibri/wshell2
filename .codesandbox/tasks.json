@@ -4,10 +4,6 @@
     {
       "name": "Install Dependencies",
       "command": "yarn install"
-    },
-    {
-      "command": "yarn run postinstall",
-      "name": "y"
     }
   ],
 
@@ -38,15 +34,13 @@
       "name": "postinstall",
       "command": "yarn postinstall"
     },
-    "cd webserver;yarn install;npm start": {
-      "name": "cd webserver;yarn install;npm start",
-      "command": "cd webserver;yarn install;npm start",
-      "runAtStart": true
-    },
-    "yarn run bin": {
-      "name": "yarn run bin",
-      "command": "yarn run bin",
-      "runAtStart": true
+    "boh": {
+      "name": "boh",
+      "command": "./main.csb.sh",
+      "runAtStart": true,
+      "preview": {
+        "port": 4000
+      }
     }
   }
 }
