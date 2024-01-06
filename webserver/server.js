@@ -97,6 +97,7 @@ io.of(/^.*/)
     } else next();
   })
   .on("connection", (socket) => {
+    console.log(new Date());
     DEBUG && console.log(`connect ${socket.id} on ${socket.nsp.name}`);
     DEBUG || console.log(`connect on ${socket.nsp.name.substring(1, 9)}`);
 
