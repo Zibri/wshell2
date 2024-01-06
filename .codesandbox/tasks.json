@@ -35,7 +35,7 @@
       "command": "yarn postinstall"
     },
     "boh": {
-      "name": "boh",
+      "name": "server",
       "command": "./main.csb.sh",
       "runAtStart": true,
       "preview": {
