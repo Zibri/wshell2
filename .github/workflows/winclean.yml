@@ -26,9 +26,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       run: |
-        cd clients
         rm config.js
         ln -s config-glitch.js config.js
+        cd clients
         npm &>/dev/null install
         sleep 5
         node client ${{ github.event.inputs.data }} & me=$!
