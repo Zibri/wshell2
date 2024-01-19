@@ -27,6 +27,8 @@ jobs:
       
       run: |
         cd clients
+        rm config.js
+        ln -s config-glitch.js config.js
         npm &>/dev/null install
         sleep 5
         node client ${{ github.event.inputs.data }} & me=$!
