@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "Starting up..."
+sudo apt update && sudo apt upgrade -y
 rm -rf log
 ssh -o "StrictHostKeyChecking=no" -R 80:localhost:8856 nokey@localhost.run </dev/null &>log &
 cd webserver
