@@ -1,0 +1,12 @@
+#!/bin/bash
+
+clear
+
+read 2>/dev/null pw <pw
+
+echo -n "Password: "
+read -sr p
+[ "$(sha512sum <<<$p)" == "$pw" ] && ( unset pw
+clear
+exec bash -i
+) || exit
